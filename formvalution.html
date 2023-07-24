@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form valution</title>
+</head>
+
+<body>
+
+    <form action="">
+        <label for="username">username</label>
+        <input type="text" id="username" onkeyup="username_validation()">
+        <span id="error_username"></span>
+        <br><br>
+        <label for="phone">phone</label>
+        <input type="text" id="phone" onkeyup="phone_validation()">
+        <span id="error_phone"></span>
+        <br><br>
+
+        <label for="address">addresss</label>
+        <input type="text" id="address" onkeyup="address_validation()">
+        <span id="error_address"></span>
+
+        <br><br>
+        <label for="email">email</label>
+        <input type="text" id="email" onkeyup="email_validation()">
+        <span id="error_email"></span>
+
+        <br><br>
+        <label for="sub">sub</label>
+        <input type="text" id="sub" onkeyup="sub_validation()">
+        <span id="error_sub"></span>
+<br><br>
+        <label for="password">password</label>
+        <input type="text" id="password" onkeyup="password_validation()">
+        <span id="error_password"></span>
+<br><br>
+
+<label for="cpassword">C password</label>
+<input type="text" id="cpassword" onkeyup="cpassword_validation()">
+<span id="error_cpassword"></span>
+<br><br>
+
+
+
+        <label for="age">age</label>
+        <input type="number" id="age" onkeyup="age_validation()">
+        <span id="error_age"></span>
+
+        <br><br>
+        <button type="submit" class="btn btn-primary">login</button>
+    </form>
+
+    <script>
+function cpassword_validation(){
+    var cpassword = document.getElementById("cpassword").value;
+    var password = document.getElementById("password").value;
+
+
+    if(cpassword != password){
+       displayMsg("error_cpassword","dont match","red") 
+    }
+else{
+    displayMsg("error_cpassword","match","blue")
+}
+}
+
+
+
+
+
+
+
+
+        function username_validation() {
+            var username = document.getElementById("username").value;
+            // document.write(username)
+            if (username.match(/^[0-9]+/)) {
+                displayMsg("error_username", "Username must be start with alpha", 'red')
+            }
+            else if (username.length < 6) {
+                displayMsg("error_username", "Username have at least 6")
+            }
+            else {
+                displayMsg("error_username", "valid", 'blue')
+            }
+
+        }
+        function phone_validation() {
+            var phone = document.getElementById("phone").value;
+            // document.write(phone)
+            if (!phone.match(/^[0-9,+][977]+/)) {
+                displayMsg("error_phone", "start with num 977", 'red')
+            }
+            else if (phone.length < 10) {
+                displayMsg("error_phone", "at least 10 digit", 'red')
+            }
+            else if (phone.length > 14) {
+                displayMsg("error_phone", "invalid", 'red')
+            }
+            else {
+                displayMsg("error_phone", "valid", 'blue')
+            }
+
+        }
+        function address_validation() {
+            var address = document.getElementById("address").value;
+            //  document.write(address)
+            if (address.match(/^[0-9]+/)) {
+                displayMsg("error_address", "address must be start with alpha", 'red')
+            }
+            else if (address.length < 6) {
+                displayMsg("error_address", "address have at least")
+            }
+            else {
+                displayMsg("error_address", "valid", 'blue')
+            }
+
+        }
+
+
+                function email_validation() {
+            var email = document.getElementById("email").value;
+            // document.write(email)
+
+            if (email .match (/^[0-9]+/)){
+                displayMsg("error_email","email  must be start with alpha","red")
+            }
+             else if (!email.match(/^[a-z][a-z0-9]+[@](gmail)[.](com)$/)) {
+                displayMsg("error_email", "invalid email", "red")
+            }
+
+            else {
+                displayMsg("error_email", "valid", 'blue')
+            }
+        }
+
+        function sub_validation() {
+            var sub = document.getElementById("sub").value;
+            // document.write(sub)
+            if (sub.match(/^[0-9]+/)) {
+                displayMsg("error_sub", "sub must be start with alpha", 'red')
+            }
+            else if (sub.length < 6) {
+                displayMsg("error_sub", "sub have at least 6")
+            }
+            else {
+                displayMsg("error_sub", "valid", 'blue')
+            }
+
+        }
+
+        function password_validation() {
+            var password = document.getElementById("password").value;
+            // document.write(password)
+            if (!password.match(/[a-z]/)) {
+                displayMsg( "error_password","lower case at least", "red")
+            }
+           else if (!password.match(/[A-Z]/)) {
+                displayMsg( "error_password","upercase case at least",  "red")
+            }
+            else if (!password.match(/[!@#$^&*]/)) {
+                displayMsg( "error_password","special char",  "red")
+            }
+            else if (!password.match(/[0-9]/)) {
+                displayMsg( "error_password","one number",  "red")
+            }
+            else if (password.length < 8) {
+                displayMsg("error_password", "weak password","red" )
+            }
+            else {
+                displayMsg("error_password", "valid", 'blue')
+            }
+        }
+
+        function age_validation() {
+            var age = document.getElementById("age").value;
+            // document.write(age)
+            if (!age.match(/^[0-9]+&/)) {
+                displayMsg("error_age", "age must be only number", "red")
+            }
+           else if (age<18) {
+                displayMsg("error_age", "you must be at least 18", "red")
+            }
+            if (age>70) {
+                displayMsg("error_age", "invalid age", "red")
+            }
+            else {
+                displayMsg("error_age", "valid age", 'blue')
+            }
+
+        }
+        function displayMsg(id, msg, color) {
+            document.getElementById(id).innerHTML = msg;
+            document.getElementById(id).style.color = color;
+        }
+
+    </script>
+</body>
+
+</html>
